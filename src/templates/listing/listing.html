@@ -79,7 +79,7 @@
       <p class="no-results">{{ _('Loading...') }}</p>
     {% except %}
     {% end %}
-
+    <!--
     {% defer (url=api('collections')|urlparams(ordering='-created'), paginate='ul.collections') %}
       {{ feed_collections(this.objects, response) }}
     {% placeholder %}
@@ -105,6 +105,7 @@
       {% except %}
       {% end %}
     {% endif %}
+    -->
   </div>
 
   <div class="feed-search-results search-results"></div>
