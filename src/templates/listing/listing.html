@@ -22,7 +22,7 @@
 {% endmacro %}
 
 {% macro feed_collections(collections, response) %}
-  <h2>{{ _('Collections ({number})')|format({number: this.meta.total_count or collections.length}) }}</h2>
+  {#<h2>{{ _('Collections ({number})')|format({number: this.meta.total_count or collections.length}) }}</h2>
   <ul class="collections element-listing">
     {% for collection in collections %}
       {% include "listing/collection.html" %}
@@ -33,7 +33,7 @@
     {% if response and response.meta.next %}
       {{ more_button(response.meta.next) }}
     {% endif %}
-  </ul>
+  </ul>#}
 {% endmacro %}
 
 {% macro feed_brands(brands, response) %}
@@ -53,7 +53,7 @@
 {% endmacro %}
 
 {% macro feed_shelves(shelves, response) %}
-  <ul class="shelves element-listing">
+  {#<ul class="shelves element-listing">
     <h2>{{ _('Operator Shelves ({number})')|format({number: this.meta.total_count or shelves.length}) }}</h2>
     {% for shelf in shelves %}
       {% include "listing/shelf.html" %}
@@ -64,7 +64,7 @@
     {% if response.meta.next %}
       {{ more_button(response.meta.next) }}
     {% endif %}
-  </ul>
+  </ul>#}
 {% endmacro %}
 
 <section class="manage-modules-listing island">
