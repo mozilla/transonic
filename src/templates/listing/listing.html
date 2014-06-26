@@ -79,6 +79,7 @@
     {% except %}
     {% end %}
 
+    {#
     {% defer (url=api('collections')|urlparams(ordering='-created'), paginate='ul.collections') %}
       {{ feed_collections(this.objects, response) }}
     {% placeholder %}
@@ -86,6 +87,7 @@
       <p class="no-results">{{ _('Loading...') }}</p>
     {% except %}
     {% end %}
+    #}
 
     {% defer (url=api('feed-brands')|urlparams(order='-created'), paginate='ul.brands') %}
       {{ feed_brands(this.objects, response) }}
@@ -95,6 +97,7 @@
     {% except %}
     {% end %}
 
+    {#
     {% if not is_builder %}
       {% defer (url=api('feed-shelves')|urlparams(order='-created'), paginate='ul.shelves') %}
         {{ feed_shelves(this.objects, response) }}
@@ -104,6 +107,7 @@
       {% except %}
       {% end %}
     {% endif %}
+    #}
   </div>
 
   <div class="feed-search-results search-results"></div>
