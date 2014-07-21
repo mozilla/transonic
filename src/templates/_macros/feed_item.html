@@ -87,7 +87,7 @@
   {{ cast_app(brand.apps, true) }}
 {% endmacro %}
 
-{% macro feed_collection(coll) %}
+{% macro feed_collection(coll, preview_landing) %}
   {% set color = coll.background_color %}
   {% set desc = coll.description|translate(coll) %}
 
@@ -112,11 +112,39 @@
     </section>
   </a>
 
+  {% if preview_landing %}
+    <h3 class="preview-header">{{ _('Detail Page') }}</h3>
+    <div class="column-b coll-landing">
+      {% if coll.apps %}
+        {% if coll.apps[0].group %}
+          {% for group in feed.group_apps(coll.apps) %}
+            <section class="feed-layout-grid multi-app-tile mkt-tile c">
+              <h1 class="feed-tile-header">{{ group.name }}</h1>
+              <ul class="app-list">
+                {% for app in group.apps %}
+                  {{ mini_tile(app) }}
+                {% endfor %}
+              </ul>
+            </section>
+          {% endfor %}
+        {% else %}
+          <ol class="container c">
+            {% for app in coll.apps %}
+              <li class="item result app c">
+                {{ market_tile(app, link=false, src='collection', tray=False) }}
+              </li>
+            {% endfor %}
+          </ol>
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+
   {{ feed.cast_collection(coll, true) }}
   {{ cast_app(coll.apps, true) }}
 {% endmacro %}
 
-{% macro feed_shelf(shelf, landing) %}
+{% macro feed_shelf(shelf, landing, preview_landing) %}
   {% set color = shelf.background_color %}
 
   <a href="{{ url('feed/feed_shelf', [shelf.slug]) }}" class="fanchor">
@@ -127,6 +155,26 @@
       </div>
     </section>
   </a>
+
+  {% if preview_landing %}
+    <section class="main feed feed-landing shelf-landing">
+      <h3 class="preview-header">{{ _('Detail Page') }}</h3>
+      <div class="column-a">
+
+        <p class="desc">{{ shelf.description|translate(shelf) }}</p>
+      </div>
+
+      {% if shelf.apps %}
+        <ol class="container column-b c">
+          {% for app in shelf.apps %}
+            <li class="item result app c">
+              {{ market_tile(app, link=false, src='shelf', tray=False) }}
+            </li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+    </section>
+  {% endif %}
 
   {{ feed.cast_shelf(shelf, true) }}
   {{ cast_app(shelf.apps, true) }}

@@ -187,7 +187,7 @@ define('feed_previews',
                 url: function() {return '#';},
             })
         );
-        clamp(document.querySelector('.feed .desc'), 4);
+        clamp(document.querySelector('.feed .fanchor .desc'), 4);
     }
 
     function stub_globals() {

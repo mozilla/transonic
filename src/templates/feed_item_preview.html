@@ -6,8 +6,8 @@
   {% elif item_type == 'brand' %}
     {{ feed_brand(obj) }}
   {% elif item_type == 'collection' %}
-    {{ feed_collection(obj) }}
+    {{ feed_collection(obj, true) }}
   {% elif item_type == 'shelf' %}
-    {{ feed_shelf(obj) }}
+    {{ feed_shelf(obj, false, true) }}
   {% endif %}
 </li>
