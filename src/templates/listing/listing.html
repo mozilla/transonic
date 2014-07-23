@@ -2,73 +2,84 @@
 
 {% macro more_button(next_page_url) %}
   <li class="loadmore">
-    <button class="button alt" data-url="{{ (apiHost(next_page_url) + next_page_url)|safe }}">{{ _('More') }}</button>
+    <button data-url="{{ (apiHost(next_page_url) + next_page_url)|safe }}">{{ _('See more') }}</button>
   </li>
 {% endmacro %}
 
 {% macro feed_apps(apps, response) %}
-  <h2>{{ _('Featured Apps ({number})')|format({number: this.meta.total_count or apps.length}) }}</h2>
-  <ul class="feed-apps element-listing">
-    {% for app in apps %}
-      {% include "listing/app.html" %}
-    {% endfor %}
-    {% if not apps.length %}
-      <p class="no-results">{{ _('No featured apps found') }}</p>
-    {% endif %}
-    {% if response and response.meta.next %}
-      {{ more_button(response.meta.next) }}
-    {% endif %}
-  </ul>
+  <section>
+    <h2>{{ _('Featured Apps <em>({number})')|format({number: this.meta.total_count or apps.length}) }}</em></h2>
+    <ul class="feed-apps element-listing">
+      {% for app in apps %}
+        {% include "listing/app.html" %}
+      {% endfor %}
+      {% if not apps.length %}
+        <p class="no-results">{{ _('No featured apps found') }}</p>
+      {% endif %}
+      {% if response and response.meta.next %}
+        {{ more_button(response.meta.next) }}
+      {% endif %}
+    </ul>
+  </section>
 {% endmacro %}
 
 {% macro feed_collections(collections, response) %}
-  <h2>{{ _('Collections ({number})')|format({number: this.meta.total_count or collections.length}) }}</h2>
-  <ul class="collections element-listing">
-    {% for collection in collections %}
-      {% include "listing/collection.html" %}
-    {% endfor %}
-    {% if not collections.length %}
-      <p class="no-results">{{ _('No collections found') }}</p>
-    {% endif %}
-    {% if response and response.meta.next %}
-      {{ more_button(response.meta.next) }}
-    {% endif %}
-  </ul>
+  <section>
+    <h2>{{ _('Collections <em>({number})')|format({number: this.meta.total_count or collections.length}) }}</em></h2>
+    <ul class="collections element-listing">
+      {% for collection in collections %}
+        {% include "listing/collection.html" %}
+      {% endfor %}
+      {% if not collections.length %}
+        <p class="no-results">{{ _('No collections found') }}</p>
+      {% endif %}
+      {% if response and response.meta.next %}
+        {{ more_button(response.meta.next) }}
+      {% endif %}
+    </ul>
+  </section>
 {% endmacro %}
 
 {% macro feed_brands(brands, response) %}
   {% set b_types = feed.BRAND_TYPES %}
-  <h2>{{ _('Editorial Brands ({number})')|format({number: this.meta.total_count or brands.length}) }}</h2>
-  <ul class="brands element-listing">
-    {% for brand in brands %}
-      {% include "listing/brand.html" %}
-    {% endfor %}
-    {% if not brands.length %}
-      <p class="no-results">{{ _('No brands found') }}</p>
-    {% endif %}
-    {% if response.meta.next %}
-      {{ more_button(response.meta.next) }}
-    {% endif %}
-  </ul>
+  <section>
+    <h2>{{ _('Editorial Brands <em>({number})')|format({number: this.meta.total_count or brands.length}) }}</em></h2>
+    <ul class="brands element-listing">
+      {% for brand in brands %}
+        {% include "listing/brand.html" %}
+      {% endfor %}
+      {% if not brands.length %}
+        <p class="no-results">{{ _('No brands found') }}</p>
+      {% endif %}
+      {% if response.meta.next %}
+        {{ more_button(response.meta.next) }}
+      {% endif %}
+    </ul>
+  </section>
 {% endmacro %}
 
 {% macro feed_shelves(shelves, response) %}
-  <ul class="shelves element-listing">
-    <h2>{{ _('Operator Shelves ({number})')|format({number: this.meta.total_count or shelves.length}) }}</h2>
-    {% for shelf in shelves %}
-      {% include "listing/shelf.html" %}
-    {% endfor %}
-    {% if not shelves.length %}
-      <p class="no-results">{{ _('No shelves found') }}</p>
-    {% endif %}
-    {% if response.meta.next %}
-      {{ more_button(response.meta.next) }}
-    {% endif %}
-  </ul>
+  <section>
+    <h2>{{ _('Operator Shelves <em>({number})')|format({number: this.meta.total_count or shelves.length}) }}</em></h2>
+    <ul class="shelves element-listing">
+      {% for shelf in shelves %}
+        {% include "listing/shelf.html" %}
+      {% endfor %}
+      {% if not shelves.length %}
+        <p class="no-results">{{ _('No shelves found') }}</p>
+      {% endif %}
+      {% if response.meta.next %}
+        {{ more_button(response.meta.next) }}
+      {% endif %}
+    </ul>
+  </section>
 {% endmacro %}
 
-<section class="manage-modules-listing island">
-  <input class="search-elements" type="search" placeholder="{{ _('Search for a feed element...') }}">
+<section class="manage-modules-listing">
+  <form>
+    <input class="search-elements" type="search" placeholder="{{ _('Search for feed items') }}">
+    <a href="#" class="search-clear" title="Clear">Clear</a>
+  </form>
 
   <div class="feed-api-results search-results">
     {% defer (url=api('feed-apps-list')|urlparams(ordering='-created'),

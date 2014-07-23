@@ -32,10 +32,12 @@ define('views/listing',
         });
 
     }))
-    .on('keypress', '.search-elements', _.debounce(function() {
+    .on('input', '.search-elements', _.debounce(function() {
         var $this = $(this);
+        var $clear = $this.siblings('.search-clear');
 
         if ($this.val().length > 1) {
+            $clear.show();
             requests.get(urls.api.url('feed-element-search', [], {'q': $this.val()})).done(function(data) {
                 $('.feed-api-results').hide();
                 $('.feed-search-results').html(nunjucks.env.render('search_results.html', {
@@ -45,10 +47,17 @@ define('views/listing',
                 cast_search_results(data);
             });
         } else {
+            $clear.hide();
             $('.feed-api-results').show();
             $('.feed-search-results').hide();
         }
-    }, 250));
+    }, 250))
+    .on('click', '.search-clear', function(evt) {
+        evt.preventDefault();
+        var $this = $(this);
+        $this.hide();
+        $this.siblings('.search-elements').val('').trigger('input');
+    });
 
     function cast_search_results(data) {
         models('feed-app').cast(data.apps);

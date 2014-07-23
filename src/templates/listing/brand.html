@@ -2,7 +2,7 @@
     data-slug="{{ brand.slug }}" {% if is_builder %}draggable="true"{% endif %}>
   <a {% if not is_builder %}href="{{ url('edit', ['brands', brand.slug]) }}"{% endif %}>
     {% if brand.app_count or brand.apps.length %}
-      <img class="icon" src="{{ brand.preview_icon or brand.apps[0].icons['48'] }}">
+      <img class="icon" src="{{ brand.preview_icon or brand.apps[0].icons['32'] }}">
     {% endif %}
     <h3 class="elliflow">
       {{ _('{name} ({num_apps} apps)')|format({name: feed.BRAND_TYPES[brand.type][0] if num_apps == 1 else feed.BRAND_TYPES[brand.type][1],

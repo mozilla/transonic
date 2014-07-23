@@ -2,7 +2,7 @@
     data-slug="{{ shelf.slug }}" {% if is_builder %}draggable="true"{% endif %}>
   <a {% if not is_builder %}href="{{ url('edit', ['shelves', shelf.slug]) }}"{% endif %}>
     {% if shelf.app_count or shelf.apps.length %}
-      <img class="icon" src="{{ shelf.preview_icon or shelf.apps[0].icons['48'] }}">
+      <img class="icon" src="{{ shelf.preview_icon or shelf.apps[0].icons['32'] }}">
     {% endif %}
     <h3>{{ _('{name} ({num_apps} apps)')|format({name: shelf.name,
                                                  num_apps: shelf.app_count or shelf.apps.length}) }}</h3>
