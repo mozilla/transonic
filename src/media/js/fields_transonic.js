@@ -4,6 +4,7 @@ define('fields_transonic',
     'use strict';
 
     var imageUploads = {};  // keep track of drag-and-drop uploads to stuff into FormData later.
+    var isEmptySlug = true;
 
     z.page.on('keypress', 'form', function(e) {
         if (e.keyCode == 13) {
@@ -130,6 +131,19 @@ define('fields_transonic',
     })
     .on('input', '.localized', function() {
         highlight_localized();
+        var slugified = '';
+        var $slug = $('#slug');
+        $slug.data('placeholder-original', $slug.attr('placeholder'));
+
+        if (isEmptySlug) {
+            slugified = $(this).val().replace(/\s/g, '-').trim().toLowerCase();
+            $slug.attr('placeholder', slugified || $slug.data('placeholder-original'));
+        }
+    })
+    .on('blur', '.localized', function() { // Stop prefilling slug once we defocus 'name'.
+        if ($('#slug').val().length) {
+            isEmptySlug = false;
+        }
     });
 
     // Highlight languages that have been localized.

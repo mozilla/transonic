@@ -18,7 +18,7 @@ define('forms_transonic',
             pullquote_attribution: $form.find('[name="pq-attribution"]').val(),
             pullquote_rating: $form.find('.pq-rating input:checked').val(),
             pullquote_text: utils_local.build_localized_field('pq-text'),
-            slug: $form.find('[name="slug"]').val(),
+            slug: get_slug($form.find('[name="slug"]')),
         };
         var $file_input = $form.find('[name="background-image-feed-banner"]');
         var $preview = $form.find('.fileinput .preview');
@@ -49,7 +49,7 @@ define('forms_transonic',
             type: type,
             description: utils_local.build_localized_field('description'),
             name: utils_local.build_localized_field('name'),
-            slug: $form.find('[name="slug"]').val(),
+            slug: get_slug($form.find('[name="slug"]')),
         };
         var $file_input = $form.find('[name="background-image-feed-banner"]');
         var $preview = $form.find('.fileinput .preview');
@@ -75,7 +75,7 @@ define('forms_transonic',
             apps: get_app_ids($('.apps-widget .result')),
             layout: $form.find('[name="layout"]').val(),
             type: $form.find('[name="type"]').val(),
-            slug: $form.find('[name="slug"]').val(),
+            slug: get_slug($form.find('[name="slug"]')),
         };
         console.log(JSON.stringify(data));
 
@@ -100,7 +100,7 @@ define('forms_transonic',
             description: utils_local.build_localized_field('description'),
             name: utils_local.build_localized_field('name'),
             region: $form.find('[name="region"]').val(),
-            slug: $form.find('[name="slug"]').val(),
+            slug: get_slug($form.find('[name="slug"]')),
         };
         var $file_input = $form.find('[name="background-image-feed-banner"]');
         var $preview = $form.find('.fileinput .preview');
@@ -330,6 +330,13 @@ define('forms_transonic',
         };
         reader.readAsDataURL($file_input[0].files[0]);
         return def.promise();
+    }
+
+    function get_slug($slug) {
+        if ($slug.attr('placeholder').length) {
+            return $slug.attr('placeholder');
+        }
+        return $slug.val();
     }
 
     return {
