@@ -101,6 +101,7 @@ define('feed_previews',
             background_image: $('.background-image-input .preview').attr('src'),
             description: $('.description .localized:not(.hidden').val().escape() || '',
             name: $('.name .localized:not(.hidden').val().escape() || '',
+            type: $('.collection-type-choices').val() || feed.COLL_PROMO
         }
     }
 
@@ -113,7 +114,7 @@ define('feed_previews',
             background_image: $('.background-image-input .preview').attr('src'),
             description: $('.description .localized:not(.hidden').val().escape() || '',
             name: $('.name .localized:not(.hidden').val().escape() || '',
-            type: $('.collection-type-choices input:checked').val() || feed.COLL_PROMO,
+            type: $('.collection-type-choices').val() || feed.COLL_PROMO
         }
     }
 
@@ -160,6 +161,8 @@ define('feed_previews',
 
     function refresh_preview(obj, item_type) {
         stub_globals();
+
+        console.log(obj);
 
         $('.feed').append(
             nunjucks.env.render('feed_item_preview.html', {
