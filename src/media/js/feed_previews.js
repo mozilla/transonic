@@ -134,8 +134,10 @@ define('feed_previews',
             app_count: apps.length,
             background_color: $('.bg-color input:checked').val(),
             background_image: $('.background-image-input .preview').attr('src') || SAMPLE_BG,
+            carrier: $('.carrier select').val(),
             description: $('.description .localized:not(.hidden').val().escape() || '',
             name: $('.name .localized:not(.hidden').val().escape() || 'A Sample Shelf',
+            region: $('.region select').val(),
             type: $('.collection-type-choices input:checked').val() || feed.COLL_PROMO,
         };
     }
