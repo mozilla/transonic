@@ -20,6 +20,6 @@ define('routes_api', [], function() {
         'feed-items': '/api/v2/feed/get/?cache=0&vary=0',
         'feed-builder': '/api/v2/feed/builder/',
         'feed-element-search': '/api/v2/feed/elements/search/',
-        'search': '/api/v1/apps/search/suggest?cache=1&vary=0',
+        'search': '/api/v1/apps/search/suggest?cache=1&vary=0&filtering=0',
     };
 });
