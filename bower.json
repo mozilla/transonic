@@ -5,7 +5,7 @@
   "dependencies": {
     "marketplace-frontend": "7.0.1",
     "marketplace-constants": "0.3.1",
-    "marketplace-core-modules": "1.4.1",
+    "marketplace-core-modules": "1.6.2",
 
     "almond": "0.2.9",
     "jquery": "2.0.2",
