@@ -1,7 +1,7 @@
 define('feed_previews',
-    ['feed', 'l10n', 'templates', 'utils_local', 'z'],
-    function(feed, l10n, nunjucks, utils, z) {
-
+    ['collection_colors', 'feed', 'l10n', 'templates', 'utils_local', 'z'],
+    function(colors, feed, l10n, nunjucks, utils, z) {
+    var colors = colors.COLLECTION_COLORS;
     var gettext = l10n.gettext;
 
     // Constants are constant.
@@ -173,6 +173,13 @@ define('feed_previews',
             var slug = $feed_element.data('slug');
 
             var feed_element = require('models')('feed-' + type).lookup(slug);
+
+            // Polyfill collection colors when we were hardcoding hexes.
+            if (!feed_element.background_color && feed_element.color) {
+                feed_element.background_color = colors[feed_element.color] ||
+                                                colors.sapphire;
+            }
+
             $('.feed').append(
                 nunjucks.env.render('feed_item_preview.html', {
                     cast_app: function() {},
