@@ -1,7 +1,12 @@
+/*
+    Contains things to initialize before we kick off the app.
+    Exposes a promise that the `main` module should wait on.
+*/
 define('init',
-    ['core/init', 'helpers_local', 'routes', 'settings_app', 'settings_local'],
-    function(init, helpersLocal, routes, settingsApp, settingsLocal) {
+    ['core/init', 'helpers_local', 'routes', 'settings_app', 'settings_local',
+     'templates'],
+    function(init, helpersLocal, routes, settingsApp, settingsLocal,
+             templates) {
 
-    // Put any code that needs to run to initialize the app here or in the
-    // dependencies.
+    return init.ready;
 });

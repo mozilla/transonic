@@ -1,23 +1,23 @@
+/*
+    The main file that initializes the app.
+    Only put initialization code in here. Everything else should go into
+    separate and appropriate modules. This is not your diaper.
+*/
 console.log('Firefox Marketplace Curation Tools');
 
-define('main', ['routes', 'settings_app'], function() {
-require(['init'], function() {
-require([
-    'core/l10n',
-    'core/log',
-    'core/login',
-    'core/navigation',
-    'templates',
-    'core/urls',
-    'core/user',
-    'core/z',
-    'permissions',
-], function(l10n, log, login, navigation, nunjucks, urls, user, z, permissions) {
+define('main', ['init'], function(init) {
+init.done(function() {
+require(
+    [// Modules actually used in main.
+     'core/l10n', 'core/log', 'core/navigation', 'core/nunjucks', 'core/urls',
+     'core/user', 'core/z', 'permissions',
+     // Modules we require to initialize global stuff.
+     'core/login'],
+    function(l10n, log, navigation, nunjucks, urls,
+             user, z, permissions) {
     var logger = require('core/log')('main');
 
-    logger.log('Dependencies resolved, starting init');
-
-    z.body.addClass('html-' + require('core/l10n').getDirection());
+    z.body.addClass('html-' + l10n.getDirection());
 
     z.page.one('loaded', function() {
         logger.log('Hiding splash screen');
@@ -34,7 +34,7 @@ require([
         $('#site-footer').html(
             nunjucks.env.render('footer.html'));
 
-        z.body.toggleClass('logged-in', require('core/user').logged_in());
+        z.body.toggleClass('logged-in', user.logged_in());
         z.page.trigger('reloaded_chrome');
     }).trigger('reload_chrome');
 
@@ -76,7 +76,7 @@ require([
     z.page.trigger('navigate', [window.location.pathname + window.location.search]);
     z.page.trigger('loaded');
 
-    logger.log('Initialization complete');
+    logger.log('Done');
 });
 });
 });
