@@ -3,12 +3,7 @@ define('settings_app',
     function(settings, localSettings) {
 
     settings._extend({
-        app_name: 'transonic',
-        init_module: 'main',
-        default_locale: 'en-US',
-        api_url: 'http://' + window.location.hostname,  // No trailing slash, please.
-
-        storage_version: '0',
+        api_url: 'http://' + window.location.hostname,
 
         param_whitelist: ['q', 'sort'],
         api_param_blacklist: null,
