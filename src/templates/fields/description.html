@@ -1,11 +1,12 @@
+{% set charlimit = 150 if feed_type == 'shelves' else 300 %}
 <div class="description field has-textarea top-hat-field half" data-error-field="description">
   {% set desc = obj.description if obj else {} %}
   <label data-required-types="description">{{ _('Description') }}</label>
   {% for lang in settings.languages %}
-    {{ locale_textarea('description', lang, desc[lang], 300) }}
+    {{ locale_textarea('description', lang, desc[lang], charlimit) }}
   {% endfor %}
   <p class="help-text" data-for="description">
   	<span class="optional">{{ _('Optional; ') }}</span>
-  	<span class="char-count">{{ _('Maximum 300 characters.') }}</span>
+    <span class="char-count">{{ _('Maximum {n} characters.')|format(n=charlimit) }}</span>
   </p>
 </div>
