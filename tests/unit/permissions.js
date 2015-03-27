@@ -1,5 +1,5 @@
 define('tests/unit/permissions',
-    ['squire'],
+    ['Squire'],
     function(Squire) {
 
     describe('permissions.authenticationRequired', function() {

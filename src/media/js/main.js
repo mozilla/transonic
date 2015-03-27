@@ -24,6 +24,7 @@ require(
         $('#splash-overlay').addClass('hide');
         $('main').append(
             nunjucks.env.render('feed_aside.html'));
+        z.body.addClass('loaded');
     });
 
     // Do some last minute template compilation.
