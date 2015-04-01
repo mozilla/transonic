@@ -1,72 +1,67 @@
-// Karma configuration
-// Generated on Thu Jan 29 2015 15:17:49 GMT-0600 (CST)
+/*
+    Karma configuration. Generated from marketplace-gulp/templates.
+*/
+var mktConfig = require('./config');
 
 module.exports = function(config) {
     config.set({
-
-        // base path that will be used to resolve all patterns (eg. files, exclude)
+        // Base path that will be used to resolve all patterns.
         basePath: '',
 
-
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        // Include requirejs first or chai complains.
+        // Frameworks to use
+        // Available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        // Include requirejs first or else chai complains.
         frameworks: ['requirejs', 'chai', 'mocha', 'sinon'],
 
-
-        // list of files / patterns to load in the browser
+        // List of files / patterns to load in the browser.
         files: [
             'test-main.js',
-            {pattern: 'bower_components/marketplace-core-modules/core/**/*.js', included: false},
-            {pattern: 'bower_components/squire/src/Squire.js', included: false},
+            {pattern: 'bower_components/marketplace-core-modules/core/**/*.js',
+             included: false},
+            {pattern: 'bower_components/squire/src/Squire.js',
+             included: false},
             {pattern: 'src/media/js/**/*.js', included: false},
-            {pattern: 'src/media/js/**/*.js', included: false},
+            {pattern: 'src/templates.js', included: false},
             {pattern: 'tests/unit/*.js', included: false},
         ],
 
-
-        // list of files to exclude
+        // List of files to exclude.
         exclude: [
             'src/media/js/lib/marketplace-core-modules/**/*',
         ],
 
-
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        // Preprocess matching files before serving them to the browser.
+        // Available PPs: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
         },
 
-
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        // Test results reporter to use.
+        // Available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['mocha'],
 
+        // Web server port.
+        port: mktConfig.PORT ? mktConfig.PORT + 2000 : 9876,
 
-        // web server port
-        port: 9876,
-
-
-        // enable / disable colors in the output (reporters and logs)
+        // Enable / disable colors in the output (reporters and logs).
         colors: true,
 
 
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        // Level of logging (config.LOG_DISABLE, config.LOG_ERROR,
+        //                   config.LOG_WARN || config.LOG_INFO ||
+        //                   config.LOG_DEBUG).
         logLevel: config.LOG_INFO,
 
 
-        // enable / disable watching file and executing tests whenever any file changes
+        // File-watching and executing tests when a file changes.
         autoWatch: true,
 
 
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        // Start these browsers.
+        // Available browsers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: ['Firefox'],
 
-
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
+        // Continuous Integration mode. If true, Karma captures browsers,
+        // runs tests and exits.
         singleRun: false
     });
 };

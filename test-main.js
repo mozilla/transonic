@@ -51,9 +51,12 @@ require.config({
     baseUrl: '/base/src/media/js',
 
     paths: {
+        'collection_colors': 'lib/collection_colors',
         'core': bowerPath('marketplace-core-modules/core'),
         'jquery': 'lib/jquery',
-        'squire': bowerPath('squire/src/Squire'),
+        'regions': 'lib/regions',
+        'Squire': bowerPath('squire/src/Squire'),
+        'templates': '../../templates',
         'tests': '../../../tests',
         'underscore': 'lib/underscore',
     },
