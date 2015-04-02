@@ -52,6 +52,8 @@ def deploy_jenkins():
 
     deploy_build_id('transonic')
 
+    rpm.clean()
+
 
 @task
 def update():
