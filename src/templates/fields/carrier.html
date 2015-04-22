@@ -5,7 +5,7 @@
   <div class="pretty-select">
     <select id="carrier" name="carrier">
     <option value="" {{ 'selected' if not carrier_selected }}>
-    {% for carrier in settings.carriers %}
+    {% for carrier in CARRIERS %}
       <option value="{{ carrier }}" {{ 'selected' if carrier_selected == carrier }}>
         {{ carrier|unslug }}
       </option>

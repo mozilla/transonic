@@ -1,7 +1,7 @@
 define('helpers_local',
-    ['collection_colors', 'feed', 'core/nunjucks', 'regions', 'underscore', 'core/urls',
-     'utils_local', 'core/z'],
-    function(collection_colors, feed, nunjucks, regions, _, urls,
+    ['carriers', 'collection_colors', 'feed', 'core/nunjucks', 'regions',
+     'underscore', 'core/urls', 'utils_local', 'core/z'],
+    function(carriers, collection_colors, feed, nunjucks, regions, _, urls,
              utils_local, z) {
     var filters = nunjucks.require('filters');
     var globals = nunjucks.require('globals');
@@ -11,6 +11,7 @@ define('helpers_local',
     globals.feed = feed;
     globals.REGIONS = regions.REGION_CHOICES_SLUG;
     globals.REGION_CHOICES = regionTransform(regions.REGION_CHOICES_SLUG);
+    globals.CARRIERS = carriers.CARRIER_SLUGS;
 
     function unslug(str) {
         // Change underscores to spaces and text-transform uppercase.
