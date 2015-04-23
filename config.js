@@ -9,6 +9,7 @@ var localConfig = extend(true, {
         // Bower configuration for which files to get, and where to put them.
         // [Source, excluding bower_components]: [Destination].
         'marketplace-constants/dist/css/regions.styl': 'src/media/css/lib/',
+        'marketplace-constants/dist/js/carriers.js': config.LIB_DEST_PATH,
         'marketplace-constants/dist/js/collection_colors.js': config.LIB_DEST_PATH,
         'marketplace-constants/dist/js/regions.js': config.LIB_DEST_PATH,
         'marketplace-constants/dist/img/regions/*': 'src/media/img/icons/regions/',
@@ -26,6 +27,7 @@ var localConfig = extend(true, {
         // RequireJS configuration for development, notably files in lib/.
         // [Module name]: [Module path].
         paths: {
+            'carriers': 'lib/carriers',
             'collection_colors': 'lib/collection_colors',
             'regions': 'lib/regions',
         },

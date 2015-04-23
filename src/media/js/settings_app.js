@@ -28,30 +28,6 @@ define('settings_app',
             'it', 'ja', 'mk', 'nl', 'pl', 'pt-BR', 'ro', 'ru', 'sr', 'sr-Latn',
             'sk', 'tr', 'zh-CN'
         ],
-
-        carriers: [
-            'america_movil',
-            'china_unicom',
-            'congstar',
-            'deutsche_telekom',
-            'etisalat',
-            'grameenphone',
-            'hutchinson_three_group',
-            'kddi',
-            'kt',
-            'megafon',
-            'mtn',
-            'o2',
-            'qtel',
-            'singtel',
-            'smart',
-            'sprint',
-            'telecom_italia_group',
-            'telefonica',
-            'telenor',
-            'tmn',
-            'vimpelcom'
-        ],
     });
 
     settings._extend(localSettings);
