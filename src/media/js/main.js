@@ -12,7 +12,7 @@ require(
      'core/l10n', 'core/log', 'core/navigation', 'core/nunjucks', 'core/urls',
      'core/user', 'core/z', 'permissions',
      // Modules we require to initialize global stuff.
-     'core/login', 'feed_previews'],
+     'core/login', 'feed_previews', 'views/listing'],
     function(l10n, log, navigation, nunjucks, urls,
              user, z, permissions) {
     var logger = require('core/log')('main');
