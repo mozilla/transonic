@@ -25,8 +25,8 @@ define('settings_app',
 
         languages: [
             'af', 'ar', 'bg', 'bn-BD', 'bn-IN', 'ca', 'cs', 'cy', 'da', 'de',
-            'dsb', 'ee', 'el', 'en-US', 'es', 'eu', 'ff', 'fr', 'fy', 'ga-IE',
-            'ha', 'hsb', 'hu', 'id', 'ig', 'it', 'ja', 'ko', 'nb-NO', 'nl',
+            'dsb', 'ee', 'el', 'en-GB', 'en-US', 'es', 'eu', 'ff', 'fr', 'fy', 
+            'ga-IE', 'ha', 'hsb', 'hu', 'id', 'ig', 'it', 'ja', 'ko', 'nb-NO', 'nl',
             'pl', 'pt-BR', 'ro', 'ru', 'sk', 'sq', 'sr', 'sr-Latn', 'sv-SE', 'sw',
             'tr', 'uk', 'wo', 'xh', 'zh-CN', 'zh-TW', 'zu'
         ],
