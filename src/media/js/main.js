@@ -10,11 +10,11 @@ init.done(function() {
 require(
     [// Modules actually used in main.
      'core/l10n', 'core/log', 'core/navigation', 'core/nunjucks', 'core/urls',
-     'core/user', 'core/z', 'permissions',
+     'core/user', 'core/utils', 'core/z', 'permissions',
      // Modules we require to initialize global stuff.
      'core/login', 'feed_previews', 'views/listing'],
     function(l10n, log, navigation, nunjucks, urls,
-             user, z, permissions) {
+             user, utils, z, permissions) {
     var logger = require('core/log')('main');
 
     z.body.addClass('html-' + l10n.getDirection());
@@ -49,7 +49,8 @@ require(
 
     z.page.on('loaded logged_in', function() {
         if (user.logged_in() && !user.get_permission('curator') &&
-            !user.get_permission('admin')) {
+            !user.get_permission('admin') &&
+            utils.baseurl(location.pathname) !== urls.reverse('403')) {
             z.page.trigger('navigate', [urls.reverse('403')]);
         }
     });
