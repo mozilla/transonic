@@ -13,6 +13,8 @@ define('routes', [
         {pattern: root + 'login$', view_name: 'login'},
         {pattern: root + 'manage$', view_name: 'listing'},
         {pattern: root + 'manage/([^/<>"\']+)/([^/<>"\']+)$', view_name: 'edit'},
+        {pattern: root + 'late-customizations$',
+         view_name: 'late-customizations'},
     ]);
 
     router.api.addRoutes({
@@ -33,6 +35,8 @@ define('routes', [
         'feed-items': '/api/v2/feed/get/?cache=0&vary=0',
         'feed-builder': '/api/v2/feed/builder/',
         'feed-element-search': '/api/v2/feed/elements/search/',
+        'late-customization': '/api/v2/late-customization/{0}/',
+        'late-customizations': '/api/v2/late-customization/',
         'search': '/api/v2/apps/search/no-region/?cache=1&vary=0',
     });
 });
