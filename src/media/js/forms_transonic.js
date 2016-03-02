@@ -31,7 +31,8 @@ define('forms_transonic',
 
         // Sanitize data before submitting to API.
         if (data.type !== feed.FEEDAPP_QUOTE) {
-            data.pullquote_attribution = data.pullquote_rating = '';
+            delete data.pullquote_attribution;
+            delete data.pullquote_rating;
         }
         data = populate_empty_translations(data, ['description']);
 
