@@ -16,11 +16,11 @@ python:
 node_js:
   - "0.10"
 env:
-  - RUN_TEST=uitest-phantom START_SERVER=1 UPLOAD_CAPTURES=1 MAKE_LANGPACKS=1
-  - RUN_TEST=uitest-slimer START_SERVER=1 UPLOAD_CAPTURES=1 MAKE_LANGPACKS=1
+  - RUN_TEST=uitest-phantom START_SERVER=1 UPLOAD_CAPTURES=1 MAKE_I18NJS=1
+  - RUN_TEST=uitest-slimer START_SERVER=1 UPLOAD_CAPTURES=1 MAKE_I18NJS=1
   - RUN_TEST=lint
   - RUN_TEST=unittest
-  - RUN_TEST=test-langpacks
+  - RUN_TEST=test-i18njs
 before_script:
   - "export PHANTOMJS_EXECUTABLE='phantomjs --local-to-remote-url-access=yes --ignore-ssl-errors=yes'"
   - 'export SLIMERJSLAUNCHER=$(which firefox)'
@@ -32,7 +32,7 @@ before_script:
 # Start the server if needed
   - 'if [ $START_SERVER ]; then bash tests/serve.sh; fi'
 # Make the langpacks if needed.
-  - 'if [ $MAKE_LANGPACKS ]; then commonplace langpacks; fi'
+  - 'if [ $MAKE_I18NJS ]; then commonplace i18njs; fi'
 # Install the latest slimer if we're running slimer.
   - "if [ $RUN_TEST = 'uitest-slimer' ]; then make install-slimer; fi"
 script:

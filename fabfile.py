@@ -36,7 +36,7 @@ def build():
         local('cp src/media/js/settings_local_hosted.js '
               'src/media/js/settings_local.js')
         local('make build')
-        local('node_modules/.bin/commonplace langpacks')
+        local('node_modules/.bin/commonplace i18njs')
 
 
 @task
@@ -62,7 +62,7 @@ def update():
         local('make install')
         local('cp src/media/js/settings_local_hosted.js src/media/js/settings_local.js')
         local('make build')
-        local('node_modules/.bin/commonplace langpacks')
+        local('node_modules/.bin/commonplace i18njs')
 
 
 @task
