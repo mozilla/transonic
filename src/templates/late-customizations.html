@@ -1,0 +1,19 @@
+<form class="transonic-form late-customizations">
+  <section class="island c">
+    <h3>Late Customizations</h3>
+
+    {% include "fields/carrier.html" %}
+    {% include "fields/region.html" %}
+
+    <button type="submit" class="button submit" name="manage">{{ _('Manage') }}</button>
+    <button type="submit" class="button submit" name="change">{{ _('Change') }}</button>
+  </section>
+
+  <div class="manage-late-customizations"></div>
+</form>
+
+<template id="manage-late-customizations-template">
+  <section class="island apps apps-multiple">
+    {% include "apps_widget/apps_widget_multiple.html" %}
+  </section>
+</template>

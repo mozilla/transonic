@@ -11,16 +11,17 @@
 #create-landing {
     border-radius: 5px;
     padding: 40px 20px;
+    text-align: center;
 
     li {
         background-position: center 0;
         background-size: 150px auto;
         background-repeat: no-repeat;
         display: inline-block;
-        margin-right: 20px;
+        margin: 10px auto;
         position: relative;
         text-align: center;
-        width: 200px;
+        width: 250px;
 
         &:last-child {
             margin-right: 0;
@@ -30,6 +31,7 @@
         &.create-brand { background-image: url(../img/icons/item_types/brand.svg); }
         &.create-collection { background-image: url(../img/icons/item_types/collection.svg); }
         &.create-shelf { background-image: url(../img/icons/item_types/shelf.svg); }
+        &.create-late-customizations { background-image: url(../img/icons/item_types/late-customizations.svg); }
 
         a {
             color: $text;

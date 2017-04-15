@@ -13,7 +13,11 @@ define('apps_widget',
 
     z.page.on('click', '.apps-widget .actions .delete', function() {
         /* Remove app. */
-        $(this).closest('.result').remove();
+        var $this = $(this);
+        var $result = $this.closest('.result');
+        var id = $result.data('id');
+        $result.trigger('app-deleted', $result.data());
+        $result.remove();
         z.page.trigger('refresh_preview');
     })
 
@@ -91,14 +95,18 @@ define('apps_widget',
         z.page.trigger('refresh_preview');
     };
 
-    var append = function(app) {
+    var append = function(app, data) {
         if (get_app_ids().indexOf(parseInt(app.id, 10)) !== -1) {
             return;
         }
 
         // Render it in the widget.
         var $apps_widget = $('.apps-widget');
-        $apps_widget.find('.apps').append(app_select.render_result(app, true));
+        var $row = $(app_select.render_result(app, true));
+        if (data) {
+            $row.data('data', data);
+        }
+        $apps_widget.find('.apps').append($row);
         $apps_widget.find('.placeholder-text').hide();
         $apps_widget.find('.apps').sortable({
             onDrop: function($item) {
